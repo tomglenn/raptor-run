@@ -22,3 +22,5 @@ texture = ExtResource("1_aa7ic")
 [node name="Platform" parent="Environment/Moving" instance=ExtResource("2_fmjdu")]
 
 [node name="Player" parent="." instance=ExtResource("3_0twje")]
+position = Vector2(-150, -150)
+scale = Vector2(0.4, 0.4)
