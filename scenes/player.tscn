@@ -1,6 +1,7 @@
-[gd_scene load_steps=48 format=3 uid="uid://ctjnrqp6idpcx"]
+[gd_scene load_steps=49 format=3 uid="uid://ctjnrqp6idpcx"]
 
 [ext_resource type="Texture2D" uid="uid://ds6y563w46ttc" path="res://assets/sprites/Player/player_death.png" id="1_4w1c2"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_dro37"]
 [ext_resource type="Texture2D" uid="uid://c0bsl3nghtctk" path="res://assets/sprites/Player/player_double_jump.png" id="2_yyrti"]
 [ext_resource type="Texture2D" uid="uid://mhqxav8xdifl" path="res://assets/sprites/Player/player_jump.png" id="3_irjcj"]
 [ext_resource type="Texture2D" uid="uid://b1osmvwg2hysv" path="res://assets/sprites/Player/player_run.png" id="4_00bwf"]
@@ -199,11 +200,12 @@ size = Vector2(100, 200)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+script = ExtResource("1_dro37")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 frames = SubResource("SpriteFrames_iprh7")
 animation = &"run"
-frame = 3
+frame = 7
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
