@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://buxueg3u0d1ln"]
+[gd_scene load_steps=6 format=3 uid="uid://buxueg3u0d1ln"]
 
 [ext_resource type="Texture2D" uid="uid://dnpwi8ct0xojg" path="res://assets/sprites/Background/background_static.png" id="1_aa7ic"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_fdudm"]
 [ext_resource type="PackedScene" uid="uid://xm28kpy7xjbm" path="res://scenes/platform.tscn" id="2_fmjdu"]
 [ext_resource type="PackedScene" uid="uid://ctjnrqp6idpcx" path="res://scenes/player.tscn" id="3_0twje"]
+[ext_resource type="PackedScene" uid="uid://bbqnlbdwkskq6" path="res://scenes/collectible.tscn" id="4_xfhbk"]
 
 [node name="World" type="Node2D" groups=["example"]]
 script = ExtResource("1_fdudm")
@@ -22,6 +23,9 @@ texture = ExtResource("1_aa7ic")
 [node name="Moving" type="Node2D" parent="Environment"]
 
 [node name="Platform" parent="Environment/Moving" instance=ExtResource("2_fmjdu")]
+
+[node name="Collectible" parent="Environment/Moving" instance=ExtResource("4_xfhbk")]
+position = Vector2(44, -112)
 
 [node name="Player" parent="." instance=ExtResource("3_0twje")]
 position = Vector2(-150, -150)
