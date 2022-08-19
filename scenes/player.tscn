@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ctjnrqp6idpcx"]
+[gd_scene load_steps=50 format=3 uid="uid://ctjnrqp6idpcx"]
 
 [ext_resource type="Texture2D" uid="uid://ds6y563w46ttc" path="res://assets/sprites/Player/player_death.png" id="1_4w1c2"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_dro37"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://mhqxav8xdifl" path="res://assets/sprites/Player/player_jump.png" id="3_irjcj"]
 [ext_resource type="Texture2D" uid="uid://b1osmvwg2hysv" path="res://assets/sprites/Player/player_run.png" id="4_00bwf"]
 [ext_resource type="Texture2D" uid="uid://bok3r4f23c7dl" path="res://assets/sprites/Player/player_run_shoot.png" id="5_4d1fa"]
+[ext_resource type="AudioStream" uid="uid://ckt0h656f3ovg" path="res://assets/sounds/jump.wav" id="7_5x7xa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfx30"]
 atlas = ExtResource("1_4w1c2")
@@ -205,9 +206,12 @@ script = ExtResource("1_dro37")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 frames = SubResource("SpriteFrames_iprh7")
 animation = &"run"
-frame = 6
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_gqv8y")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_5x7xa")
