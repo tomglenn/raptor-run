@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://buxueg3u0d1ln"]
+[gd_scene load_steps=8 format=3 uid="uid://buxueg3u0d1ln"]
 
 [ext_resource type="Texture2D" uid="uid://dnpwi8ct0xojg" path="res://assets/sprites/Background/background_static.png" id="1_aa7ic"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_fdudm"]
 [ext_resource type="PackedScene" uid="uid://xm28kpy7xjbm" path="res://scenes/platform.tscn" id="2_fmjdu"]
 [ext_resource type="PackedScene" uid="uid://ctjnrqp6idpcx" path="res://scenes/player.tscn" id="3_0twje"]
+[ext_resource type="Script" path="res://scripts/play_area.gd" id="3_p1h1a"]
 [ext_resource type="AudioStream" uid="uid://btgeagu3f3fjb" path="res://assets/sounds/collect.wav" id="6_xq8wb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1w52"]
+size = Vector2(1800, 1200)
 
 [node name="World" type="Node2D" groups=["example"]]
 script = ExtResource("1_fdudm")
@@ -19,6 +23,13 @@ texture = ExtResource("1_aa7ic")
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Static" type="Node2D" parent="Environment"]
+
+[node name="PlayArea" type="Area2D" parent="Environment/Static"]
+collision_mask = 4
+script = ExtResource("3_p1h1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/PlayArea"]
+shape = SubResource("RectangleShape2D_y1w52")
 
 [node name="Moving" type="Node2D" parent="Environment"]
 
