@@ -10,6 +10,7 @@ signal game_over
 @onready var player = $"/root/World/Player"
 @onready var ground = $"/root/World/Environment/Static/Ground"
 @onready var game_over_label = $"/root/World/HUD/UI/GameOver"
+@onready var ammo_label = $"/root/World/HUD/UI/Ammo"
 
 var platform = preload("res://scenes/platform.tscn")
 var platform_collectible_single = preload("res://scenes/platform_collectible_single.tscn")
@@ -47,6 +48,7 @@ func _process(delta):
 	
 	# Update the UI labels
 	score_label.text = "Score: %s" % score
+	ammo_label.text = "Ammo: %s" % player.ammo
 
 func _spawn_next_platform():
 	var available_platforms = [

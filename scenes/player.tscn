@@ -208,7 +208,7 @@ script = ExtResource("1_dro37")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 frames = SubResource("SpriteFrames_iprh7")
 animation = &"run"
-frame = 4
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
