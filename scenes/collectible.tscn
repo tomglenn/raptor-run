@@ -99,7 +99,7 @@ script = ExtResource("1_1eqh6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 frames = SubResource("SpriteFrames_5e8v5")
 animation = &"idle"
-frame = 2
+frame = 8
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
