@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqf508fg1hjiw"]
+[gd_scene load_steps=18 format=3 uid="uid://dqf508fg1hjiw"]
 
 [ext_resource type="Texture2D" uid="uid://bl1cbhkf6m78d" path="res://assets/sprites/Projectile/projectile_hit.png" id="1_bm6r8"]
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_e6r7e"]
 [ext_resource type="Texture2D" uid="uid://dbvvm3e7ndim4" path="res://assets/sprites/Projectile/projectile_idle.png" id="2_en8nj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2y7ri"]
@@ -70,12 +71,12 @@ size = Vector2(60, 30)
 [node name="Projectile" type="AnimatableBody2D"]
 collision_layer = 2
 collision_mask = 5
+script = ExtResource("1_e6r7e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 frames = SubResource("SpriteFrames_ey00o")
 animation = &"idle"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
