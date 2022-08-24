@@ -32,6 +32,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not player.active:
+		# Reload the game if we're not playing and the user hits space
+		if Input.is_action_just_pressed("jump"):
+			get_tree().reload_current_scene()
 		return
 		
 	# Spawn a new platform
