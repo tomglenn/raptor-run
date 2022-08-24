@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqf508fg1hjiw"]
+[gd_scene load_steps=17 format=3 uid="uid://dqf508fg1hjiw"]
 
 [ext_resource type="Texture2D" uid="uid://bl1cbhkf6m78d" path="res://assets/sprites/Projectile/projectile_hit.png" id="1_bm6r8"]
 [ext_resource type="Texture2D" uid="uid://dbvvm3e7ndim4" path="res://assets/sprites/Projectile/projectile_idle.png" id="2_en8nj"]
@@ -64,6 +64,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpb4y"]
+size = Vector2(60, 30)
+
 [node name="Projectile" type="AnimatableBody2D"]
 collision_layer = 2
 collision_mask = 5
@@ -72,4 +75,8 @@ collision_mask = 5
 scale = Vector2(0.5, 0.5)
 frames = SubResource("SpriteFrames_ey00o")
 animation = &"idle"
+frame = 2
 playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qpb4y")
