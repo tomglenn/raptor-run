@@ -1,10 +1,15 @@
 extends Node2D
 
+signal game_over
+
 @export var world_speed = 300
 @export var collectible_pitch_reset_interval = 2000
 @onready var moving_environment = $"/root/World/Environment/Moving"
 @onready var collect_sound = $"/root/World/Sounds/CollectSound"
 @onready var score_label = $"/root/World/HUD/UI/Score"
+@onready var player = $"/root/World/Player"
+@onready var ground = $"/root/World/Environment/Static/Ground"
+@onready var game_over_label = $"/root/World/HUD/UI/GameOver"
 
 var platform = preload("res://scenes/platform.tscn")
 var platform_collectible_single = preload("res://scenes/platform_collectible_single.tscn")
@@ -21,9 +26,14 @@ var reset_collectible_pitch_time = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
+	player.player_died.connect(_on_player_died)
+	ground.body_entered.connect(_on_ground_body_entered)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not player.active:
+		return
+		
 	# Spawn a new platform
 	if Time.get_ticks_msec() > next_spawn_time:
 		_spawn_next_platform()
@@ -64,6 +74,9 @@ func _spawn_next_platform():
 	next_spawn_time += world_speed
 
 func _physics_process(delta):
+	if not player.active:
+		return
+	
 	# Move the platforms left
 	moving_environment.position.x -= world_speed * delta
 	
@@ -73,3 +86,12 @@ func add_score(value):
 	collect_sound.play()
 	collectible_pitch += 0.1
 	reset_collectible_pitch_time = Time.get_ticks_msec() + collectible_pitch_reset_interval
+
+func _on_player_died():
+	emit_signal("game_over")
+	game_over_label.text = game_over_label.text % score
+	game_over_label.set_visible(true)
+
+func _on_ground_body_entered(body):
+	if body.is_in_group("player"):
+		player.die()

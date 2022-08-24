@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://buxueg3u0d1ln"]
+[gd_scene load_steps=9 format=3 uid="uid://buxueg3u0d1ln"]
 
 [ext_resource type="Texture2D" uid="uid://dnpwi8ct0xojg" path="res://assets/sprites/Background/background_static.png" id="1_aa7ic"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_fdudm"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1w52"]
 size = Vector2(1800, 1200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6u4p"]
+size = Vector2(3000, 20)
 
 [node name="World" type="Node2D" groups=["example"]]
 script = ExtResource("1_fdudm")
@@ -30,6 +33,13 @@ script = ExtResource("3_p1h1a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/PlayArea"]
 shape = SubResource("RectangleShape2D_y1w52")
+
+[node name="Ground" type="Area2D" parent="Environment/Static"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Static/Ground"]
+position = Vector2(0, 600)
+shape = SubResource("RectangleShape2D_b6u4p")
 
 [node name="Moving" type="Node2D" parent="Environment"]
 
@@ -63,3 +73,17 @@ theme_override_constants/outline_size = 7
 theme_override_font_sizes/font_size = 30
 text = "Score: 1000"
 horizontal_alignment = 2
+
+[node name="GameOver" type="Label" parent="HUD/UI"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -26.0
+offset_bottom = 26.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "Game Over. You scored %s points!
+Press \"Jump\" to restart."
+horizontal_alignment = 1
